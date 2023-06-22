@@ -167,3 +167,5 @@ output*.yaml
 personal
 !personal/.keep
 
+.vscode
+
