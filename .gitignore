@@ -165,7 +165,8 @@ local_config.yaml
 .vscode
 output*.yaml
 personal
-!personal/.keep
+!english/personal/.keep
+!french/personal/.keep
 
 .vscode
 
