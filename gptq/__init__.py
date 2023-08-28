@@ -138,6 +138,7 @@ class GPTQ(LLMBinding):
                     model_name, 
                     use_fast=True
                     )
+            assert(self.tokenizer)
             # load quantized model to the first GPU
             if self.binding_config.split_between_cpu_and_gpu:
                 params = {
@@ -399,7 +400,8 @@ class GPTQ(LLMBinding):
                                             repetition_penalty=gpt_params["repeat_penalty"],
                                             streamer = self,
                                             )
-                
+            except torch.cuda.OutOfMemoryError as oom:
+                print("OOM")
             except Exception as ex:
                 if str(ex)!="canceled":
                     trace_exception(ex)
